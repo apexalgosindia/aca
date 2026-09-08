@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>₹4 per order on AC Agarwal — via ApexAlgos India</title>
+<meta name="description" content="Open an AC Agarwal trading account through ApexAlgos India and trade at a flat ₹4 per executed order — built for algo trading with free XTS API access and Tradetron.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEAE1;
+    --paper-alt:#E3DFD1;
+    --ink:#1B2A3D;
+    --ink-soft:#51606f;
+    --amber:#B4791F;
+    --amber-deep:#8f5e14;
+    --green:#2F6E52;
+    --red:#A8362B;
+    --line:#c9c2ae;
+    --line-soft:#d8d3c2;
+    --serif: "Source Serif 4", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--amber-deep);}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+  .hairline{border:none;border-top:1px solid var(--line);margin:0;}
+
+  /* header */
+  header.site{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  header.site .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .mark{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:0.01em;}
+  .mark span{color:var(--amber-deep);}
+  .header-contact{font-family:var(--mono);font-size:13px;color:var(--ink-soft);}
+  .header-contact a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+
+  /* hero */
+  .hero{padding:64px 0 40px;}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(38px,6vw,58px);
+    line-height:1.08;
+    margin:0 0 22px;
+    max-width:11ch;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 0 30px;
+  }
+  .cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:2px;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:#0f1926;}
+  .btn-ghost{color:var(--ink);border-bottom:1px solid var(--ink);padding:13px 2px;}
+
+  /* ledger strip */
+  .ledger{
+    margin-top:52px;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .ledger-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:20px;
+    align-items:baseline;
+    padding:18px 0;
+  }
+  .ledger-row + .ledger-row{border-top:1px solid var(--line-soft);}
+  .ledger-label{font-size:16px;}
+  .ledger-label small{display:block;font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-top:3px;}
+  .ledger-amount{font-family:var(--mono);font-size:26px;font-weight:600;white-space:nowrap;}
+  .ledger-amount.debit{color:var(--red);text-decoration:line-through;text-decoration-thickness:1.5px;}
+  .ledger-amount.credit{color:var(--green);}
+  .stamp{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--green);
+    border:1.5px solid var(--green);
+    border-radius:3px;
+    padding:2px 7px;
+    transform:rotate(-3deg);
+    margin-left:10px;
+    vertical-align:middle;
+  }
+
+  /* sections generic */
+  section{padding:56px 0;}
+  section.alt{background:var(--paper-alt);}
+  h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(26px,3.4vw,34px);
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .section-intro{color:var(--ink-soft);max-width:60ch;margin:0 0 34px;font-size:16.5px;}
+
+  /* calculator */
+  .calc-box{
+    border:1px solid var(--ink);
+    padding:36px;
+  }
+  .calc-input-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:6px;}
+  .calc-input-row label{font-family:var(--mono);font-size:13px;color:var(--ink-soft);}
+  #ordersRange{flex:1 1 220px;accent-color:var(--amber-deep);min-width:180px;}
+  #ordersNumber{
+    font-family:var(--mono);
+    font-size:20px;
+    font-weight:600;
+    width:110px;
+    background:transparent;
+    border:none;
+    border-bottom:2px solid var(--ink);
+    color:var(--ink);
+    padding:2px 2px 4px;
+    text-align:right;
+  }
+  #ordersNumber:focus{outline:none;border-bottom-color:var(--amber-deep);}
+  .calc-caption{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-bottom:30px;}
+  .calc-results{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media (max-width:560px){.calc-results{grid-template-columns:1fr;}}
+  .result-card{border-top:2px solid var(--ink);padding-top:14px;}
+  .result-card .r-label{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);}
+  .result-card .r-value{font-family:var(--mono);font-weight:700;font-size:clamp(28px,4vw,38px);color:var(--green);line-height:1.2;margin-top:6px;}
+  .calc-foot{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+  /* benefits */
+  .benefit-list{border-top:1px solid var(--ink);}
+  .benefit{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  @media (max-width:600px){.benefit{grid-template-columns:1fr;gap:6px;}}
+  .benefit-tag{font-family:var(--mono);font-size:12px;color:var(--amber-deep);letter-spacing:0.02em;padding-top:2px;}
+  .benefit h3{margin:0 0 6px;font-size:19px;font-weight:600;}
+  .benefit p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+
+  /* steps */
+  .steps{counter-reset:step;}
+  .step{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:18px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .step:first-child{border-top:1px solid var(--line-soft);}
+  .step-num{
+    counter-increment:step;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:15px;
+    color:var(--amber-deep);
+  }
+  .step-num::before{content:counter(step, decimal-leading-zero);}
+  .step h4{margin:0 0 5px;font-size:16.5px;font-weight:600;}
+  .step p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+  .step p a{color:var(--amber-deep);}
+  .step .caution{color:var(--red);font-weight:600;}
+
+  /* callout */
+  .callout{
+    border:1.5px solid var(--amber-deep);
+    background:#f4ead5;
+    padding:22px 24px;
+    margin-top:30px;
+  }
+  .callout .callout-tag{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amber-deep);letter-spacing:0.03em;margin-bottom:8px;}
+  .callout p{margin:0;font-size:15.5px;}
+  .callout p + p{margin-top:8px;}
+
+  /* support */
+  .support-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--ink);padding-top:26px;}
+  @media (max-width:600px){.support-grid{grid-template-columns:1fr;}}
+  .support-card .s-label{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;}
+  .support-card .s-value{font-family:var(--mono);font-size:19px;font-weight:600;}
+  .support-card a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0 50px;
+  }
+  footer p{font-size:13px;color:var(--ink-soft);max-width:70ch;margin:0 0 10px;}
+  footer .fmono{font-family:var(--mono);font-size:12px;color:var(--ink-soft);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="mark">APEXALGOS <span>×</span> AC AGARWAL</div>
+    <div class="header-contact"><a href="tel:+919660020358">+91 96600 20358</a> &nbsp;·&nbsp; <a href="mailto:care@acagarwal.com">care@acagarwal.com</a></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Four rupees a trade.<br>Not twenty.</h1>
+      <p class="lede">Open your AC Agarwal trading account through ApexAlgos India and pay a flat ₹4 per executed order — instead of the ₹20 flat fee most discount brokers charge. Built for traders who run algo strategies on Tradetron.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#open-account">Open your account</a>
+        <a class="btn btn-ghost" href="#calculator">See what you'll save →</a>
+      </div>
+
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-label">Typical discount broker<small>per executed order, flat</small></div>
+          <div class="ledger-amount debit">₹20.00</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-label">AC Agarwal, via ApexAlgos<small>per executed order, flat — no hidden add-ons</small></div>
+          <div class="ledger-amount credit">₹4.00 <span class="stamp">80% less</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="calculator">
+    <div class="wrap">
+      <h2>Work out your own savings</h2>
+      <p class="section-intro">Algo strategies place a lot of orders. Move the slider to your usual monthly order count and see the difference in rupees — not just percentages.</p>
+
+      <div class="calc-box">
+        <div class="calc-input-row">
+          <label for="ordersRange">Orders per month</label>
+          <input type="range" id="ordersRange" min="10" max="10000" step="10" value="1000">
+          <input type="number" id="ordersNumber" min="1" max="200000" value="1000">
+        </div>
+        <div class="calc-caption">Comparing ₹20/order elsewhere against ₹4/order on AC Agarwal via ApexAlgos.</div>
+
+        <div class="calc-results">
+          <div class="result-card">
+            <div class="r-label">SAVED THIS MONTH</div>
+            <div class="r-value" id="monthlySavings">₹16,000</div>
+          </div>
+          <div class="result-card">
+            <div class="r-label">SAVED THIS YEAR</div>
+            <div class="r-value" id="yearlySavings">₹1,92,000</div>
+          </div>
+        </div>
+
+        <div class="calc-foot">
+          <span>Elsewhere: <strong id="oldCost">₹20,000</strong>/mo</span>
+          <span>With us: <strong id="newCost">₹4,000</strong>/mo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits">
+    <div class="wrap">
+      <h2>Why algo traders open here</h2>
+      <p class="section-intro">Lower brokerage is the headline, but the account is set up specifically for API-driven trading.</p>
+
+      <div class="benefit-list">
+        <div class="benefit">
+          <div class="benefit-tag">SPEED</div>
+          <div><h3>Built for algo trading</h3><p>A flat ₹4 per order keeps costs predictable even when a strategy fires dozens of orders a day — the pricing was designed around volume, not against it.</p></div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-tag">API</div>
+          <div><h3>Free, fast XTS API</h3><p>Your account runs on the XTS interactive and market-data API — the interface most Indian algo platforms, including Tradetron, integrate with first and support best.</p></div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-tag">SETUP</div>
+          <div><h3>No static IP for equity &amp; F&amp;O</h3><p>Connecting XTS to Tradetron for equity and F&amp;O trading needs no dedicated static IP. Only the MCX segment does — covered in the account steps below.</p></div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-tag">MORNINGS</div>
+          <div><h3>Tradetron generates your token automatically</h3><p>No manual token ritual before market open — Tradetron refreshes your API token on its own each morning once the broker is connected.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="open-account">
+    <div class="wrap">
+      <h2>How to open your account</h2>
+      <p class="section-intro">The account is opened normally, then shifted to XTS a couple of days later. Don't log in during the wait — that's the part people get wrong.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h4>Complete the application</h4>
+            <p>Click the link below and finish the account-opening process. <a href="https://shorturl.at/FVGYt" id="applyLink" target="_blank" rel="noopener">Start the AC Agarwal application →</a></p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h4>Wait for your client ID</h4>
+            <p>Your client ID arrives by email in 1–2 days once the account is opened.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h4>Don't log in yet</h4>
+            <p><span class="caution">Leave the account alone</span> — no login, no activity. It needs to be shifted to XTS first. Wait another 1–2 days, and your market-data and interactive API details will arrive by email. You can then reset your password and log in to the <a href="https://symphony.acagarwal.com:3000/dashboard#!/register" target="_blank" rel="noopener">API dashboard</a> to view your API keys.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h4>You're set</h4>
+            <p>Account open, XTS active, API keys in hand — you can log in and start trading.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div>
+            <h4>Use the ACA Math app and terminal</h4>
+            <p>Since your account runs on XTS, always trade through the <a href="https://www.acagarwal.com/math" target="_blank" rel="noopener">ACA Math app and terminal</a> — not the Bloom app, which isn't built for XTS accounts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tradetron">
+    <div class="wrap">
+      <h2>Connecting the API to Tradetron</h2>
+      <p class="section-intro">Once your XTS API keys have arrived, wire them into Tradetron in a few minutes.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div><h4>Open Broker &amp; Exchanges</h4><p>In Tradetron, go to the Broker and Exchanges page and click <strong>Add Broker</strong>.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div><h4>Select the right broker entry</h4><p>Choose <strong>AC Agarwal Retail XTS</strong> from the list.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div><h4>Enter your Interactive API details</h4><p>Use the details from the email you received, or copy them directly from the API dashboard.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div><h4>Add app key and secret</h4><p>Enter your app key and secret. Leave the token field blank, then save the broker.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div><h4>Regenerate the token</h4><p>Click the small refresh icon next to the pencil icon to trigger token generation.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div><h4>Confirm it worked</h4><p>Token generation should complete successfully. If it doesn't, contact ACA support below.</p></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-tag">MCX TRADING</div>
+        <p>To trade MCX, add a second broker entry called <strong>AC Agarwal Retail XTS OLD</strong>. This segment needs a static IP: you'll need to buy one, connect it to your API, and tell AC Agarwal how much margin you want set aside for MCX. Contact ACA support to arrange this.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="support">
+    <div class="wrap">
+      <h2>Talk to AC Agarwal</h2>
+      <p class="section-intro">For anything outside account opening and API setup — including MCX and static IP requests — reach ACA directly.</p>
+
+      <div class="support-grid">
+        <div class="support-card">
+          <div class="s-label">PHONE</div>
+          <div class="s-value"><a href="tel:01414920999">0141-4920999</a> / <a href="tel:01414049663">4049663</a></div>
+          <div class="s-value"><a href="tel:+919660020358">+91 96600 20358</a></div>
+        </div>
+        <div class="support-card">
+          <div class="s-label">EMAIL</div>
+          <div class="s-value"><a href="mailto:care@acagarwal.com">care@acagarwal.com</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Referral disclosure:</strong> ApexAlgos India is an authorised referral partner of AC Agarwal Financial Services. Accounts opened through the link on this page are tagged to ApexAlgos India, and we may receive a referral fee or commission from AC Agarwal for accounts opened this way — at no extra cost to you. Brokerage rates, account terms and the ₹4/order pricing shown here are set by AC Agarwal; please confirm current charges and terms directly with AC Agarwal before opening an account. Nothing on this page is investment advice.</p>
+    <p class="fmono">© <span id="year"></span> ApexAlgos India</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const rate_old = 20, rate_new = 4;
+  const range = document.getElementById('ordersRange');
+  const num = document.getElementById('ordersNumber');
+  const monthlyEl = document.getElementById('monthlySavings');
+  const yearlyEl = document.getElementById('yearlySavings');
+  const oldCostEl = document.getElementById('oldCost');
+  const newCostEl = document.getElementById('newCost');
+
+  function fmtINR(n){
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  }
+
+  function update(orders){
+    orders = Math.max(0, Number(orders) || 0);
+    const oldCost = orders * rate_old;
+    const newCost = orders * rate_new;
+    const monthlySave = oldCost - newCost;
+    const yearlySave = monthlySave * 12;
+    monthlyEl.textContent = fmtINR(monthlySave);
+    yearlyEl.textContent = fmtINR(yearlySave);
+    oldCostEl.textContent = fmtINR(oldCost);
+    newCostEl.textContent = fmtINR(newCost);
+  }
+
+  range.addEventListener('input', () => { num.value = range.value; update(range.value); });
+  num.addEventListener('input', () => {
+    let v = Number(num.value);
+    if (v > Number(range.max)) range.value = range.max;
+    else if (v >= Number(range.min)) range.value = v;
+    update(v);
+  });
+
+  update(range.value);
+</script>
+
+</body>
+</html>
