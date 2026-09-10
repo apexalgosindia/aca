@@ -321,7 +321,9 @@
       <a href="#calculator">Savings</a>
       <a href="#benefits">Benefits</a>
       <a href="#open-account">Open account</a>
+      <a href="#verify-apis">Verify APIs</a>
       <a href="#tradetron">API setup</a>
+      <a href="#mcx">MCX</a>
     </nav>
     <a class="btn-tg" href="https://t.me/apexalgosupport" target="_blank" rel="noopener">Message us on Telegram</a>
   </div>
@@ -471,6 +473,36 @@
     </div>
   </section>
 
+  <section id="verify-apis">
+    <div class="wrap">
+      <h2>Verify your APIs</h2>
+      <p class="section-intro">Once your account shows active, log in to the <a href="https://symphony.acagarwal.com:3000/dashboard#!/login" target="_blank" rel="noopener">XTS API dashboard</a> and check your APIs are ready — before you touch Tradetron.</p>
+
+      <div class="benefit-grid">
+        <div class="benefit" style="border-left-color:var(--text-faint);">
+          <div class="benefit-tag" style="color:var(--text-faint);">NOT NEEDED HERE</div>
+          <h3>Market Data</h3>
+          <p>You'll see this API listed in the dashboard too — it's not used for this setup, so you can ignore it.</p>
+        </div>
+        <div class="benefit" style="border-left-color:var(--green);">
+          <div class="benefit-tag" style="color:var(--green);">USE THIS ON TRADETRON</div>
+          <h3>Interactive Order (Algo)</h3>
+          <p>This is the one you connect to Tradetron. No static IP required. It must show <strong>Active</strong> status with an Algo Id attached to each exchange segment (NSECM, NSEFO, BSEFO).</p>
+        </div>
+        <div class="benefit" style="border-left-color:var(--amber);">
+          <div class="benefit-tag" style="color:var(--amber);">ONLY IF YOU TRADE MCX</div>
+          <h3>Interactive Order (Non-Algo)</h3>
+          <p>You only need this one for MCX. It requires a static IP bought from Tradetron, set as the Primary IP here — covered in the MCX section below.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="border-color:rgba(251,113,133,0.35);background:rgba(251,113,133,0.06);">
+        <div class="callout-tag" style="color:var(--red);">API MISSING, NO ALGO ID, OR NOT ACTIVE?</div>
+        <p style="color:var(--text-soft);">If your Interactive Order (Algo) API isn't showing up, has no Algo Id attached, or isn't Active — that's on AC Agarwal's side to fix. Email <a href="mailto:care@acagarwal.com" style="color:var(--red);">care@acagarwal.com</a> directly with your client ID.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="tradetron">
     <div class="wrap">
       <h2>Connecting the API to Tradetron</h2>
@@ -504,8 +536,52 @@
       </div>
 
       <div class="callout">
-        <div class="callout-tag">MCX TRADING</div>
-        <p>To trade MCX, add a second broker entry called <strong>AC Agarwal Retail XTS OLD</strong>. This segment needs a static IP: you'll need to buy one and connect it to your API. Message our support with how much margin you want set aside for MCX, and we'll coordinate the rest with AC Agarwal for you.</p>
+        <div class="callout-tag">TRADE MCX TOO?</div>
+        <p>MCX needs a second broker connection on Tradetron and a static IP — see the <a href="#mcx">dedicated MCX setup section</a> below.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="mcx">
+    <div class="wrap">
+      <h2>How to add the MCX broker</h2>
+      <p class="section-intro">MCX runs through a second broker connection on Tradetron, tied to your Interactive Order (Non-Algo) API and a static IP.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div><h4>Add the MCX broker</h4><p>In Tradetron, go to Broker &amp; Exchanges again, click <strong>Add Broker</strong>, and select <strong>AC Agarwal Retail XTS OLD</strong>.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div><h4>Enter your Non-Algo API details</h4><p>Use the app key and secret from the <strong>Interactive Order (Non-Algo)</strong> API in your XTS dashboard. Leave the token field blank and save.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div><h4>Buy a static IP</h4><p>A <strong>Buy Static IP</strong> button now appears next to this broker on Tradetron's brokers page. Buy it and copy the IP address.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div><h4>Update the IP in XTS</h4><p>In the XTS API dashboard, open the Interactive Order (Non-Algo) API, click <strong>Update IP</strong>, and paste the static IP into <strong>Primary IP</strong>. Save — then click Save IP again to confirm.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div><h4>Regenerate the token</h4><p>Back in Tradetron, regenerate the token for this broker, same as before.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div><h4>Deploy your MCX strategies here</h4><p>Deploy MCX strategies specifically under the <strong>AC Agarwal Retail XTS OLD</strong> broker — not the main one.</p></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-tag">MARGIN FOR MCX</div>
+        <p>Margin availability details for MCX are coming to this page soon. In the meantime, <a href="https://t.me/apexalgosupport" target="_blank" rel="noopener">message us on Telegram</a> and we'll sort it out with you.</p>
+      </div>
+
+      <div class="callout" style="border-color:rgba(45,212,239,0.35);background:rgba(45,212,239,0.06);margin-top:16px;">
+        <div class="callout-tag" style="color:var(--cyan);">STUCK ON THE INTEGRATION?</div>
+        <p style="color:var(--text-soft);">Message us on <a href="https://t.me/apexalgosupport" target="_blank" rel="noopener" style="color:var(--cyan);">Telegram</a>. If the API itself isn't showing up in your XTS dashboard, or isn't Active, that's on AC Agarwal's side — email <a href="mailto:care@acagarwal.com" style="color:var(--cyan);">care@acagarwal.com</a> directly.</p>
       </div>
     </div>
   </section>
@@ -533,7 +609,7 @@
 
 <footer>
   <div class="wrap">
-    <p><strong>Referral disclosure:</strong> ApexAlgos India is an authorised referral partner of AC Agarwal Financial Services. Accounts opened through the link on this page are tagged to ApexAlgos India, and we may receive a referral fee or commission from AC Agarwal for accounts opened this way — at no extra cost to you. Brokerage rates, account terms and the ₹4/order pricing shown here are set by AC Agarwal; please confirm current charges and terms directly with AC Agarwal before opening an account. Nothing on this page is investment advice.</p>
+    <p><strong>Referral disclosure:</strong> ApexAlgos India is a referral partner of AC Agarwal, through our individual registration with them. Accounts opened through the link on this page are mapped under ApexAlgos India, and we may receive a referral fee or commission from AC Agarwal for accounts opened this way — at no extra cost to you. The ₹4/order plan shown here is provided through our branch by AC Agarwal. Other standard charges — DP charges, exchange charges, and the like — are as per AC Agarwal's regular tariff, listed at <a href="https://www.acagarwal.com/list-of-charges" target="_blank" rel="noopener">acagarwal.com/list-of-charges</a>. Nothing on this page is investment advice.</p>
     <p class="fmono">© <span id="year"></span> ApexAlgos India</p>
   </div>
 </footer>
